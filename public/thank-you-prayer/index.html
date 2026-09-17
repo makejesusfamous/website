@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>We will pray for you — Make Jesus Famous</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="stylesheet" href="/assets/styles.css">
+<style>
+  .ty-hero{padding:56px 0 30px;text-align:center}
+  .ty-hero h1{font-size:clamp(34px,5vw,52px)}
+  .ty-hero p.lead{margin:14px auto 0}
+  .ty-video{max-width:720px;margin:26px auto 0;aspect-ratio:16/9}
+  .promise{background:var(--bg2);border-radius:var(--radius);padding:26px 28px;max-width:720px;margin:26px auto 0}
+  .promise h2{font-size:24px}
+  .pray{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:28px;max-width:720px;margin:0 auto}
+  .ok{display:none;background:#eaf6ee;border:1px solid var(--ok);color:#1f5a38;padding:14px 16px;border-radius:10px;margin-top:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top"><div class="logo">Make Jesus <span>Famous</span></div><nav><a href="/partner/">Partner</a><a href="/smart-giving/">Other ways to give</a></nav></header>
+
+<section class="ty-hero" style="border-top:0">
+  <div class="eyebrow">Welcome</div>
+  <h1>We will pray for you this week.</h1>
+  <p class="lead">You asked us to pray with you first, and that is exactly what happens. No pitch on this page. Just a welcome from Dean, and a promise.</p>
+  <div class="video ty-video placeholder">
+    <span class="badge">Dean · welcome</span>
+    <!-- Dean's welcome video — script already drafted in the SOW work; record lands with r117 -->
+    <video controls preload="none" poster="/assets/welcome-poster.jpg"><source src="/assets/dean-welcome.mp4" type="video/mp4"></video>
+  </div>
+  <div class="promise">
+    <h2>Here is what happens next.</h2>
+    <p style="color:var(--dim)">Your request goes to Dean's own prayer board — a real list he works by hand. He prays over it. If it is something you want to talk about, he may reach out himself. And over the next few weeks you will hear real stories from Tanzania, so you can see what your prayers are part of. <b>Nothing automated will ever pretend to be him.</b></p>
+  </div>
+</section>
+
+<section>
+  <div class="pray">
+    <div class="eyebrow">If you did not leave it yet</div>
+    <h2>What can we pray for, for you or your family?</h2>
+    <form id="pray-form" novalidate>
+      <div class="field"><label>Your request</label><textarea name="prayer_request" rows="4" required placeholder="Whatever is on your heart. Dean reads these himself."></textarea></div>
+      <div class="grid2">
+        <div class="field"><label>Name</label><input name="name" autocomplete="name" required></div>
+        <div class="field"><label>Email</label><input name="email" type="email" autocomplete="email" required></div>
+      </div>
+      <div class="field"><label>Mailing address <span class="small">(optional — we would love to mail you our prayer resources)</span></label><input name="address1" autocomplete="street-address" placeholder="Street"></div>
+      <div class="grid3">
+        <div class="field"><input name="city" autocomplete="address-level2" placeholder="City"></div>
+        <div class="field"><input name="state" autocomplete="address-level1" placeholder="State"></div>
+        <div class="field"><input name="postal_code" autocomplete="postal-code" placeholder="ZIP"></div>
+      </div>
+      <label class="consent"><input type="checkbox" name="consent_email"> Yes, email me the weekly prayer note and Tanzania stories. Unsubscribe any time.</label>
+      <div class="err"></div>
+      <button class="btn btn-primary" type="submit">Send my prayer request</button>
+    </form>
+    <div class="ok" id="pray-ok">It is on Dean's board. Thank you for trusting us with it.</div>
+  </div>
+</section>
+
+<footer>
+  <div><b>Make Jesus Famous Ministries Inc</b> · a 501(c)(3) public charity · EIN 92-3637456</div>
+  <div class="legal">Anything on this site that is automated or AI-assisted says so. Nothing here pretends to be Dean.</div>
+</footer>
+</div>
+
+<script src="/assets/attribution.js"></script>
+<script>
+(function(){
+  // pray-first intake goes to the Partner Path webhook (MW8) with p_intent=pray_first; the prayer text lands in prayer_request
+  var WEBHOOK="https://services.leadconnectorhq.com/hooks/e4poIvyAFiLf6JN9ubzj/webhook-trigger/5cec18ae-dae2-449a-8390-361ea978b7d0";
+  var f=document.getElementById("pray-form");
+  f.addEventListener("submit",function(e){
+    e.preventDefault(); var err=f.querySelector(".err"); err.textContent="";
+    var d=Object.fromEntries(new FormData(f).entries());
+    if(!d.prayer_request||!d.name||!d.email){err.textContent="A request, your name and an email — so we can tell you we prayed.";return;}
+    if(!f.consent_email.checked){err.textContent="Please tick the box so we may email you.";return;}
+    var a=(window.MJF&&window.MJF.attribution)||{}; var q=new URLSearchParams(location.search);
+    ["utm_source","utm_medium","utm_campaign","utm_term","utm_content"].forEach(function(k){d[k]=a[k]||q.get(k)||"";});
+    d.p_intent="pray_first"; d.p_interest="prayer"; d.p_source="thank-you-prayer"; d.consent_email="yes";
+    try{fetch(WEBHOOK,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(d),keepalive:true}).catch(function(){});}catch(e){}
+    f.style.display="none"; document.getElementById("pray-ok").style.display="block";
+  });
+})();
+</script>
+</body>
+</html>

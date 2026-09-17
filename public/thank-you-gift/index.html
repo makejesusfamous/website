@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Thank you — Make Jesus Famous</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="stylesheet" href="/assets/styles.css">
+<style>
+  .ty-hero{padding:56px 0 30px;text-align:center}
+  .ty-hero h1{font-size:clamp(34px,5vw,52px)}
+  .ty-hero p.lead{margin:14px auto 0}
+  .ty-video{max-width:720px;margin:26px auto 0;aspect-ratio:16/9}
+  .receipt{background:var(--bg2);border-radius:var(--radius);padding:18px 22px;max-width:720px;margin:22px auto 0;color:var(--dim);font-size:15px}
+  .share{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:18px}
+  .mag{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:28px;max-width:720px;margin:0 auto}
+  .mag h2{font-size:26px}
+  .mag form{margin-top:14px}
+  .ok{display:none;background:#eaf6ee;border:1px solid var(--ok);color:#1f5a38;padding:14px 16px;border-radius:10px;margin-top:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top"><div class="logo">Make Jesus <span>Famous</span></div><nav><a href="/partner/">Partner</a><a href="/smart-giving/">Other ways to give</a></nav></header>
+
+<section class="ty-hero" style="border-top:0">
+  <div class="eyebrow">Thank you</div>
+  <h1>You just put your name on a story in Tanzania.</h1>
+  <p class="lead">Your gift is in. A pastor gets trained, a village hears the name, a book gets printed — and you will hear about it. Dean has a word for you first.</p>
+  <div class="video ty-video placeholder">
+    <span class="badge">Dean · impact video</span>
+    <!-- placeholder: a 60-90s impact piece from the sermon/crusade backlog; lands with r117 -->
+    <video controls preload="none" poster="/assets/impact-poster.jpg"><source src="/assets/impact-video.mp4" type="video/mp4"></video>
+  </div>
+  <div class="receipt"><b>Your receipt</b> comes by email from Givebutter within a few minutes — that is the platform we give through because it takes 0% in fees. If it is not there, check spam once, then just reply to any email from us and we will resend it.</div>
+  <div class="share">
+    <a class="btn btn-ghost" href="#" data-share="facebook">Share on Facebook</a>
+    <a class="btn btn-ghost" href="#" data-share="copy">Copy a link for a friend</a>
+  </div>
+</section>
+
+<section>
+  <div class="mag">
+    <div class="eyebrow">One more thing</div>
+    <h2>Want the free MJF print magazine?</h2>
+    <p class="small" style="font-size:15px;color:var(--dim)">Real stories, real photos, a few times a year, mailed to your door. Confirm your mailing address and it is yours.</p>
+    <form id="mag-form" novalidate>
+      <div class="grid2">
+        <div class="field"><label>Name</label><input name="name" autocomplete="name" required></div>
+        <div class="field"><label>Email</label><input name="email" type="email" autocomplete="email" required></div>
+      </div>
+      <div class="field"><label>Mailing address</label><input name="address1" autocomplete="street-address" placeholder="Street" required></div>
+      <div class="grid3">
+        <div class="field"><input name="city" autocomplete="address-level2" placeholder="City" required></div>
+        <div class="field"><input name="state" autocomplete="address-level1" placeholder="State" required></div>
+        <div class="field"><input name="postal_code" autocomplete="postal-code" placeholder="ZIP" required></div>
+      </div>
+      <div class="err"></div>
+      <button class="btn btn-primary" type="submit">Send me the magazine</button>
+    </form>
+    <div class="ok" id="mag-ok">You are on the list. The next issue comes to your door.</div>
+  </div>
+</section>
+
+<section id="pray">
+  <div class="prayer">
+    <div class="eyebrow">Before you go</div>
+    <h2>Is there anything we can pray for, for you or your family?</h2>
+    <p>Not a formality. Your request lands on Dean's own prayer board and he prays over it himself. Just reply to the thank-you email you are about to get, or leave it here.</p>
+    <a class="btn btn-ghost" href="/thank-you-prayer/">Share a prayer request</a>
+  </div>
+</section>
+
+<footer>
+  <div><b>Make Jesus Famous Ministries Inc</b> · a 501(c)(3) public charity · EIN 92-3637456 · gifts are tax-deductible as allowed by law.</div>
+  <div class="legal">Anything on this site that is automated or AI-assisted says so. Nothing here pretends to be Dean.</div>
+</footer>
+</div>
+
+<script src="/assets/attribution.js"></script>
+<script>
+(function(){
+  var WEBHOOK="https://services.leadconnectorhq.com/hooks/e4poIvyAFiLf6JN9ubzj/webhook-trigger/48ea2b02-a549-4600-a2e2-04691349676e"; // magazine intake (MW9)
+  var f=document.getElementById("mag-form");
+  f.addEventListener("submit",function(e){
+    e.preventDefault(); var err=f.querySelector(".err"); err.textContent="";
+    var d=Object.fromEntries(new FormData(f).entries());
+    for (var k of ["name","email","address1","city","state","postal_code"]) if(!d[k]){err.textContent="Please fill in every line so the magazine actually reaches you.";return;}
+    var a=(window.MJF&&window.MJF.attribution)||{}; var q=new URLSearchParams(location.search);
+    ["utm_source","utm_medium","utm_campaign","utm_term","utm_content"].forEach(function(k){d[k]=a[k]||q.get(k)||"";});
+    d.tag="magazine-subscriber"; d.p_source="thank-you-gift";
+    try{fetch(WEBHOOK,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(d),keepalive:true}).catch(function(){});}catch(e){}
+    f.style.display="none"; document.getElementById("mag-ok").style.display="block";
+  });
+  document.querySelectorAll("[data-share]").forEach(function(b){b.addEventListener("click",function(e){
+    e.preventDefault(); var u="https://www.makejesusfamous.world/partner/";
+    if(b.dataset.share==="facebook") window.open("https://www.facebook.com/sharer/sharer.php?u="+encodeURIComponent(u),"_blank");
+    else { navigator.clipboard&&navigator.clipboard.writeText(u); b.textContent="Link copied"; }
+  });});
+})();
+</script>
+</body>
+</html>
