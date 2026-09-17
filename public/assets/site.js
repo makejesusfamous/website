@@ -32,6 +32,14 @@
   // Home loop: 1080p on wide screens, 720p otherwise; pause while the modal is open
   var loop = document.getElementById('field-loop');
   if (loop && innerWidth >= 1100 && !matchMedia('(prefers-reduced-data: reduce)').matches) { var s = loop.querySelector('source'); if (s) { s.src = '/assets/video/mjf-home-1080p.mp4'; loop.load(); loop.play().catch(function () {}); } }
+  if (loop) {
+    var modalOpen = function () { var d = document.querySelector('[data-video-modal]'); return !!(d && d.open); };
+    var wantPlay = function () { return !modalOpen() && !document.hidden && !matchMedia('(prefers-reduced-motion: reduce)').matches; };
+    // keep the muted loop alive: some embedded/webview contexts pause muted autoplay once; resume unless the user opened the modal
+    loop.addEventListener('pause', function () { if (wantPlay() && loop.__inView !== false) setTimeout(function () { if (wantPlay() && loop.paused) loop.play().catch(function () {}); }, 150); });
+    if ('IntersectionObserver' in window) { new IntersectionObserver(function (es) { es.forEach(function (e) { loop.__inView = e.isIntersecting; if (e.isIntersecting && wantPlay()) loop.play().catch(function () {}); else if (!e.isIntersecting) loop.pause(); }); }, { threshold: .05 }).observe(loop); }
+    document.addEventListener('visibilitychange', function () { if (wantPlay() && loop.__inView !== false) loop.play().catch(function () {}); });
+  }
 
   // Story video modal (same loop with sound until Dean's 90-second story video lands)
   var modal = document.querySelector('[data-video-modal]'), mv = document.getElementById('modal-video');
