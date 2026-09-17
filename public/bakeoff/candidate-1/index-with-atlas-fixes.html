@@ -1,0 +1,1367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex,nofollow">
+    <title>Make Jesus Famous Ministries | To Make the Gospel Known</title>
+    
+    <!-- Google Fonts import for Poppins & Jockey One -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jockey+One&family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Brand Color Palette */
+            --color-black: #0A0B0D;
+            --color-dark-surface: #12141A;
+            --color-card-bg: #1A1D24;
+            --color-offwhite: #F5F5F0;
+            --color-slate-blue: #2B5672;
+            --color-gold: #FFCB66;
+            --color-red-orange: #EA492E;
+            --color-text-muted: #9BA3AF;
+            --color-border: #2A2E38;
+            
+            /* Typography Tokens */
+            --font-anchor: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-accent: 'Jockey One', sans-serif;
+            
+            /* Spacing & Layout */
+            --max-width: 1280px;
+            --radius-sm: 6px;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+            --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            background-color: var(--color-black);
+            color: var(--color-offwhite);
+            font-family: var(--font-anchor);
+            font-size: 16px;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        /* Typography Styles */
+        h1, h2, h3, h4, .font-accent {
+            font-family: var(--font-anchor);
+            font-weight: 800;
+            line-height: 1.1;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+        }
+
+        .section-tag {
+            display: inline-block;
+            font-family: var(--font-accent);
+            font-size: 1.1rem;
+            letter-spacing: 0.15em;
+            color: var(--color-gold);
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
+        }
+
+        p {
+            color: var(--color-offwhite);
+            font-weight: 300;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            width: 100%;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            padding: 0.95rem 1.8rem;
+            font-family: var(--font-anchor);
+            font-weight: 700;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border-radius: var(--radius-sm);
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: var(--color-red-orange);
+            color: #FFFFFF;
+            box-shadow: 0 4px 20px rgba(234, 73, 46, 0.35);
+        }
+
+        .btn-primary:hover {
+            background-color: #f55338;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(234, 73, 46, 0.5);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            border-color: var(--color-gold);
+            color: var(--color-gold);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--color-gold);
+            color: var(--color-black);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.2);
+            color: var(--color-offwhite);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: var(--color-offwhite);
+        }
+
+        /* Dashed Placeholders for Photos & Videos */
+        .placeholder-box {
+            border: 2px dashed rgba(255, 203, 102, 0.4);
+            background: rgba(18, 20, 26, 0.7);
+            border-radius: var(--radius-md);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: border-color var(--transition-fast);
+        }
+
+        .placeholder-box:hover {
+            border-color: var(--color-gold);
+        }
+
+        .placeholder-icon {
+            width: 48px;
+            height: 48px;
+            margin-bottom: 0.75rem;
+            stroke: var(--color-gold);
+            opacity: 0.8;
+        }
+
+        .placeholder-caption {
+            font-size: 0.85rem;
+            color: var(--color-gold);
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .placeholder-subcaption {
+            font-size: 0.75rem;
+            color: var(--color-text-muted);
+            margin-top: 0.25rem;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(10, 11, 13, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            transition: padding var(--transition-fast);
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 80px;
+        }
+
+        .logo-link {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .logo-wordmark {
+            font-family: var(--font-accent);
+            font-size: 1.8rem;
+            letter-spacing: 0.05em;
+            color: var(--color-offwhite);
+            text-transform: uppercase;
+            line-height: 1;
+        }
+
+        .logo-wordmark span {
+            color: var(--color-gold);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-link {
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--color-offwhite);
+            transition: color var(--transition-fast);
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--color-gold);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background-color: var(--color-gold);
+            transition: width var(--transition-fast);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .mobile-menu-toggle span {
+            display: block;
+            width: 26px;
+            height: 2px;
+            background-color: var(--color-offwhite);
+            margin: 6px 0;
+            transition: transform var(--transition-fast), opacity var(--transition-fast);
+        }
+
+        .hero-section {
+            position: relative;
+            padding-top: 140px;
+            padding-bottom: 100px;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            background: radial-gradient(circle at 50% 20%, #1c2b38 0%, var(--color-black) 70%);
+        }
+
+        #stage-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.6;
+        }
+
+        .hero-section > .container { min-width: 0; }
+        .hero-grid {
+            min-width: 0;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 3.5rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content {
+            max-width: 640px;
+            min-width: 0;
+        }
+        .hero-media-wrapper { min-width: 0; }
+
+        .hero-title {
+            font-size: clamp(2.8rem, 5vw, 4.5rem);
+            font-weight: 900;
+            color: var(--color-offwhite);
+            margin-bottom: 1.25rem;
+            line-height: 1.05;
+        }
+
+        .hero-title span {
+            color: var(--color-gold);
+            display: inline-block;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--color-offwhite);
+            opacity: 0.9;
+            margin-bottom: 2.25rem;
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        .hero-cta-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .hero-media-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            min-height: 320px;
+        }
+
+        .stats-section {
+            background-color: var(--color-dark-surface);
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 4rem 0;
+            position: relative;
+            z-index: 3;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-card {
+            padding: 1rem;
+        }
+
+        .stat-number {
+            font-family: var(--font-accent);
+            font-size: clamp(2.8rem, 4vw, 4.2rem);
+            color: var(--color-gold);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+            font-weight: 400;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--color-text-muted);
+        }
+
+        .festivals-section {
+            padding: 7rem 0;
+            background-color: var(--color-black);
+        }
+
+        .section-header {
+            margin-bottom: 3.5rem;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 3.5vw, 3rem);
+            color: var(--color-offwhite);
+        }
+
+        .festivals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.75rem;
+        }
+
+        .festival-card {
+            background-color: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+        }
+
+        .festival-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--color-slate-blue);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .festival-media {
+            height: 180px;
+            width: 100%;
+        }
+
+        .festival-body {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .festival-city {
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+            color: var(--color-offwhite);
+        }
+
+        .festival-headline {
+            font-size: 0.95rem;
+            color: var(--color-gold);
+            font-style: italic;
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .salvation-pill {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(234, 73, 46, 0.15);
+            border: 1px solid var(--color-red-orange);
+            color: #FF8B77;
+            padding: 0.4rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            margin-bottom: 1.25rem;
+            width: fit-content;
+        }
+
+        .festival-card .btn {
+            margin-top: auto;
+            width: 100%;
+        }
+
+        .zero-fee-section {
+            padding: 5rem 0;
+            background: radial-gradient(circle at 50% 50%, #1e3345 0%, #0d161f 100%);
+            border-top: 1px solid var(--color-slate-blue);
+            border-bottom: 1px solid var(--color-slate-blue);
+        }
+
+        .zero-fee-box {
+            max-width: 860px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 3rem 2rem;
+            background: rgba(10, 11, 13, 0.6);
+            border: 2px solid var(--color-gold);
+            border-radius: var(--radius-lg);
+            box-shadow: 0 0 40px rgba(255, 203, 102, 0.12);
+        }
+
+        .zero-fee-title {
+            font-family: var(--font-accent);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: var(--color-gold);
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+            line-height: 1;
+        }
+
+        .zero-fee-verbatim {
+            font-size: 1.25rem;
+            line-height: 1.7;
+            color: var(--color-offwhite);
+            font-weight: 400;
+        }
+
+        .book-section {
+            padding: 7rem 0;
+            background-color: var(--color-black);
+            position: relative;
+        }
+
+        .book-grid {
+            display: grid;
+            grid-template-columns: 0.8fr 1.2fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .book-cover-container {
+            width: 100%;
+            aspect-ratio: 3 / 4;
+            max-width: 360px;
+            margin: 0 auto;
+        }
+
+        .book-hook {
+            font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+            font-weight: 800;
+            line-height: 1.2;
+            color: var(--color-gold);
+            margin-bottom: 1.25rem;
+        }
+
+        .book-desc {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: var(--color-offwhite);
+            opacity: 0.9;
+        }
+
+        .book-badge {
+            display: inline-block;
+            background: rgba(255, 203, 102, 0.1);
+            color: var(--color-gold);
+            border: 1px solid var(--color-gold);
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+        }
+
+        .ondemand-section {
+            padding: 7rem 0;
+            background-color: var(--color-dark-surface);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .messages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.75rem;
+            margin-bottom: 3rem;
+        }
+
+        .message-card {
+            background-color: var(--color-card-bg);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            border: 1px solid var(--color-border);
+            transition: transform var(--transition-fast), border-color var(--transition-fast);
+        }
+
+        .message-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--color-gold);
+        }
+
+        .message-thumb {
+            height: 180px;
+            width: 100%;
+        }
+
+        .message-info {
+            padding: 1.25rem;
+        }
+
+        .message-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--color-offwhite);
+            margin-bottom: 0.5rem;
+        }
+
+        .testimonies-section {
+            padding: 7rem 0;
+            background-color: var(--color-black);
+        }
+
+        .testimonies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimony-card {
+            min-height: 280px;
+        }
+
+        .testimony-text {
+            font-size: 1.05rem;
+            font-style: italic;
+            color: var(--color-offwhite);
+            margin-top: 1rem;
+            line-height: 1.6;
+        }
+
+        .prayer-section {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, var(--color-dark-surface) 0%, var(--color-slate-blue) 100%);
+            text-align: center;
+        }
+
+        .prayer-heading {
+            font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+            color: var(--color-offwhite);
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            text-transform: uppercase;
+        }
+
+        .mailing-section {
+            padding: 5rem 0;
+            background-color: var(--color-black);
+            border-top: 1px solid var(--color-border);
+        }
+
+        .mailing-box {
+            max-width: 650px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .mailing-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--color-offwhite);
+        }
+
+        .mailing-form {
+            display: flex;
+            gap: 0.75rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .mailing-input {
+            flex: 1;
+            padding: 0.95rem 1.2rem;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--color-border);
+            background-color: var(--color-dark-surface);
+            color: var(--color-offwhite);
+            font-family: var(--font-anchor);
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color var(--transition-fast);
+        }
+
+        .mailing-input:focus {
+            border-color: var(--color-gold);
+        }
+
+        footer {
+            background-color: #050607;
+            border-top: 1px solid var(--color-border);
+            padding: 4rem 0 2.5rem;
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-legal-name {
+            font-weight: 700;
+            color: var(--color-offwhite);
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--color-dark-surface);
+            border: 1px solid var(--color-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-offwhite);
+            transition: all var(--transition-fast);
+        }
+
+        .social-link:hover {
+            border-color: var(--color-gold);
+            color: var(--color-gold);
+            transform: translateY(-2px);
+        }
+
+        .social-link svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+
+        .footer-ai-disclaimer {
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 2rem;
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--color-text-muted);
+            font-style: italic;
+        }
+
+        /* Scroll Trigger Animations */
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s var(--transition-smooth), transform 0.7s var(--transition-smooth);
+        }
+
+        .reveal-on-scroll.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 992px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+                text-align: center;
+            }
+            .hero-content {
+                margin: 0 auto;
+            }
+            .hero-cta-group {
+                justify-content: center;
+            }
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2.5rem;
+            }
+            .book-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+                text-align: center;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                right: 0;
+                background-color: var(--color-dark-surface);
+                flex-direction: column;
+                padding: 2.5rem 1.5rem;
+                gap: 1.5rem;
+                border-bottom: 1px solid var(--color-border);
+                transform: translateY(-150%);
+                transition: transform var(--transition-smooth);
+            }
+            .nav-links.active {
+                transform: translateY(0);
+            }
+            .mobile-menu-toggle {
+                display: block;
+            }
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .mailing-form {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-cta-group {
+                flex-direction: column;
+                width: 100%;
+            }
+            .hero-cta-group .btn {
+                width: 100%;
+            }
+        }
+
+        /* Reduced Motion Accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            *, ::before, ::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+            .reveal-on-scroll {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header id="main-header">
+        <div class="container nav-container">
+            <a href="#" class="logo-link" aria-label="Make Jesus Famous Ministries Home">
+                <span class="logo-wordmark">Make Jesus <span>Famous</span></span>
+            </a>
+
+            <nav>
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="#festivals" class="nav-link">Festivals</a></li>
+                    <li><a href="#ondemand" class="nav-link">On-Demand</a></li>
+                    <li><a href="#run-it-back" class="nav-link">Run It Back</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#partner" class="btn btn-primary" style="padding: 0.6rem 1.2rem; font-size: 0.85rem;">Partner</a></li>
+                </ul>
+            </nav>
+
+            <button class="mobile-menu-toggle" id="mobile-toggle" aria-label="Toggle Navigation Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="hero-section">
+            <canvas id="stage-canvas"></canvas>
+
+            <div class="container">
+                <div class="hero-grid">
+                    <div class="hero-content">
+                        <span class="section-tag">Gospel Impact USA & Beyond</span>
+                        <h1 class="hero-title">Help us reach the <span>next 100,000.</span></h1>
+                        <p class="hero-subtitle">We train national pastors and hold multi-night open-air Gospel festivals in places where the name of Jesus has not been heard.</p>
+                        <div class="hero-cta-group">
+                            <a href="#partner" class="btn btn-primary">Become a partner</a>
+                            <a href="#story-video" class="btn btn-secondary">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                                Watch the story
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="hero-media-wrapper" id="story-video">
+                        <div class="placeholder-box" style="height: 100%;">
+                            <svg class="placeholder-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            <span class="placeholder-caption">&lt;video: Festival Highlights &amp; Ministry Overview&gt;</span>
+                            <span class="placeholder-subcaption">High-energy highlight reel of open-air crowds, worship, and pastor training.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="stats" class="stats-section">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-card reveal-on-scroll">
+                        <div class="stat-number" data-target="11082">0</div>
+                        <div class="stat-label">Salvations</div>
+                    </div>
+                    <div class="stat-card reveal-on-scroll">
+                        <div class="stat-number" data-target="105295">0</div>
+                        <div class="stat-label">Attendees</div>
+                    </div>
+                    <div class="stat-card reveal-on-scroll">
+                        <div class="stat-number" data-target="774091">0</div>
+                        <div class="stat-label">Reached Via Media</div>
+                    </div>
+                    <div class="stat-card reveal-on-scroll">
+                        <div class="stat-number" data-target="6">0</div>
+                        <div class="stat-label">Nations</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="festivals" class="festivals-section">
+            <div class="container">
+                <div class="section-header reveal-on-scroll">
+                    <span class="section-tag">Festival Reports</span>
+                    <h2 class="section-title">Gospel Impact Around The World</h2>
+                </div>
+
+                <div class="festivals-grid">
+                    <!-- Chato, Tanzania -->
+                    <article class="festival-card reveal-on-scroll">
+                        <div class="festival-media">
+                            <div class="placeholder-box" style="height: 100%; border-radius: 0;">
+                                <svg class="placeholder-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                                <span class="placeholder-caption">&lt;photo: Chato Crowd&gt;</span>
+                            </div>
+                        </div>
+                        <div class="festival-body">
+                            <h3 class="festival-city">Chato, Tanzania</h3>
+                            <div class="salvation-pill">22,000+ Responded to Christ</div>
+                            <p class="festival-headline">"Too many miracles to count" · 4 Nights</p>
+                            <a href="#chat-report" class="btn btn-outline">Read the report</a>
+                        </div>
+                    </article>
+
+                    <!-- Tabora, Tanzania -->
+                    <article class="festival-card reveal-on-scroll">
+                        <div class="festival-media">
+                            <div class="placeholder-box" style="height: 100%; border-radius: 0;">
+                                <svg class="placeholder-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                                <span class="placeholder-caption">&lt;photo: Tabora Festival&gt;</span>
+                            </div>
+                        </div>
+                        <div class="festival-body">
+                            <h3 class="festival-city">Tabora, Tanzania</h3>
+                            <div class="salvation-pill">7,000+ Responded</div>
+                            <p class="festival-headline">"Jesus is alive today"</p>
+                            <a href="#tabora-report" class="btn btn-outline">Read the report</a>
+                        </div>
+                    </article>
+
+                    <!-- Katoro, Tanzania -->
+                    <article class="festival-card reveal-on-scroll">
+                        <div class="festival-media">
+                            <div class="placeholder-box" style="height: 100%; border-radius: 0;">
+                                <svg class="placeholder-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                                <span class="placeholder-caption">&lt;photo: Katoro Night&gt;</span>
+                            </div>
+                        </div>
+                        <div class="festival-body">
+                            <h3 class="festival-city">Katoro, Tanzania</h3>
+                            <div class="salvation-pill">30,000+ Responded</div>
+                            <p class="festival-headline">"There was joy in the city"</p>
+                            <a href="#katoro-report" class="btn btn-outline">Read the report</a>
+                        </div>
+                    </article>
+
+                    <!-- Ushirombo, Tanzania -->
+                    <article class="festival-card reveal-on-scroll">
+                        <div class="festival-media">
+                            <div class="placeholder-box" style="height: 100%; border-radius: 0;">
+                                <svg class="placeholder-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                                <span class="placeholder-caption">&lt;photo: Ushirombo Stage&gt;</span>
+                            </div>
+                        </div>
+                        <div class="festival-body">
+                            <h3 class="festival-city">Ushirombo, Tanzania</h3>
+                            <div class="salvation-pill">25,000+ Responded</div>
+                            <p class="festival-headline">"Hundreds of miracles"</p>
+                            <a href="#ushirombo-report" class="btn btn-outline">Read the report</a>
+                        </div>
+                    </article>
+
+                    <!-- Ziway, Ethiopia -->
+                    <article class="festival-card reveal-on-scroll">
+                        <div class="festival-media">
+                            <div class="placeholder-box" style="height: 100%; border-radius: 0;">
+                                <svg class="placeholder-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                                <span class="placeholder-caption">&lt;photo: Ziway Stadium&gt;</span>
+                            </div>
+                        </div>
+                        <div class="festival-body">
+                            <h3 class="festival-city">Ziway, Ethiopia</h3>
+                            <div class="salvation-pill">5,000+ Responded</div>
+                            <p class="festival-headline">"The stadium was in awe"</p>
+                            <a href="#ziway-report" class="btn btn-outline">Read the report</a>
+                        </div>
+                    </article>
+
+                    <!-- Indonesia -->
+                    <article class="festival-card reveal-on-scroll">
+                        <div class="festival-media">
+                            <div class="placeholder-box" style="height: 100%; border-radius: 0;">
+                                <svg class="placeholder-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                                <span class="placeholder-caption">&lt;photo: Agats, Kurik &amp; Dobo&gt;</span>
+                            </div>
+                        </div>
+                        <div class="festival-body">
+                            <h3 class="festival-city">Indonesia (Agats, Kurik, Dobo)</h3>
+                            <div class="salvation-pill">Island Outreach</div>
+                            <p class="festival-headline">"To the ends of the earth"</p>
+                            <a href="#indonesia-report" class="btn btn-outline">Read the report</a>
+                        </div>
+                    </article>
+
+                    <!-- Danville, Kentucky -->
+                    <article class="festival-card reveal-on-scroll">
+                        <div class="festival-media">
+                            <div class="placeholder-box" style="height: 100%; border-radius: 0;">
+                                <svg class="placeholder-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                                <span class="placeholder-caption">&lt;photo: Danville USA Event&gt;</span>
+                            </div>
+                        </div>
+                        <div class="festival-body">
+                            <h3 class="festival-city">Danville, Kentucky</h3>
+                            <div class="salvation-pill">60+ Responded</div>
+                            <p class="festival-headline">"Gospel Impact USA"</p>
+                            <a href="#danville-report" class="btn btn-outline">Read the report</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="partner" class="zero-fee-section">
+            <div class="container">
+                <div class="zero-fee-box reveal-on-scroll">
+                    <h2 class="zero-fee-title">100% TO THE MISSION</h2>
+                    <p class="zero-fee-verbatim">0% in fees. 100% to the mission. We give through Givebutter, which covers its costs with optional tips — so every dollar you give reaches the field.</p>
+                    <div style="margin-top: 2rem;">
+                        <a href="#givebutter-partner" class="btn btn-primary">Partner With Us Today</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="run-it-back" class="book-section">
+            <div class="container">
+                <div class="book-grid">
+                    <div class="book-cover-container reveal-on-scroll">
+                        <div class="placeholder-box" style="height: 100%;">
+                            <svg class="placeholder-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                            <span class="placeholder-caption">&lt;photo: "Run It Back" Book Cover&gt;</span>
+                            <span class="placeholder-subcaption">Front cover of Dean Morris's book</span>
+                        </div>
+                    </div>
+
+                    <div class="book-content reveal-on-scroll">
+                        <span class="section-tag">New Book By Dean Morris</span>
+                        <div class="book-hook">"Forget your religion. Forget your effort. Just Jesus."</div>
+                        <p class="book-desc">In <em>Run It Back</em>, evangelist Dean Morris breaks down the core simplicity of the Gospel message and how returning to pure faith releases real power and transformation.</p>
+                        <div class="book-badge">Offered for any donation of $20+ · Free US Shipping</div>
+                        <div>
+                            <a href="#get-book" class="btn btn-primary">Get The Book</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="ondemand" class="ondemand-section">
+            <div class="container">
+                <div class="section-header reveal-on-scroll">
+                    <span class="section-tag">Video Library</span>
+                    <h2 class="section-title">On-Demand Messages</h2>
+                </div>
+
+                <div class="messages-grid">
+                    <article class="message-card reveal-on-scroll">
+                        <div class="message-thumb">
+                            <div class="placeholder-box" style="height: 100%; border-radius: 0;">
+                                <svg class="placeholder-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                <span class="placeholder-caption">&lt;video thumbnail&gt;</span>
+                            </div>
+                        </div>
+                        <div class="message-info">
+                            <h3 class="message-title">Doubt Drops Dead</h3>
+                        </div>
+                    </article>
+
+                    <article class="message-card reveal-on-scroll">
+                        <div class="message-thumb">
+                            <div class="placeholder-box" style="height: 100%; border-radius: 0;">
+                                <svg class="placeholder-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                <span class="placeholder-caption">&lt;video thumbnail&gt;</span>
+                            </div>
+                        </div>
+                        <div class="message-info">
+                            <h3 class="message-title">The Eid Experience</h3>
+                        </div>
+                    </article>
+
+                    <article class="message-card reveal-on-scroll">
+                        <div class="message-thumb">
+                            <div class="placeholder-box" style="height: 100%; border-radius: 0;">
+                                <svg class="placeholder-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                <span class="placeholder-caption">&lt;video thumbnail&gt;</span>
+                            </div>
+                        </div>
+                        <div class="message-info">
+                            <h3 class="message-title">Revival of the Gospel</h3>
+                        </div>
+                    </article>
+
+                    <article class="message-card reveal-on-scroll">
+                        <div class="message-thumb">
+                            <div class="placeholder-box" style="height: 100%; border-radius: 0;">
+                                <svg class="placeholder-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                <span class="placeholder-caption">&lt;video thumbnail&gt;</span>
+                            </div>
+                        </div>
+                        <div class="message-info">
+                            <h3 class="message-title">Walking in the Wild</h3>
+                        </div>
+                    </article>
+                </div>
+
+                <div style="text-align: center;" class="reveal-on-scroll">
+                    <a href="#all-messages" class="btn btn-secondary">See all messages</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="testimonies-section">
+            <div class="container">
+                <div class="section-header reveal-on-scroll">
+                    <span class="section-tag">First-Hand Accounts</span>
+                    <h2 class="section-title">Miracles &amp; Testimonies</h2>
+                </div>
+
+                <div class="testimonies-grid">
+                    <div class="placeholder-box testimony-card reveal-on-scroll">
+                        <svg class="placeholder-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+                        <span class="placeholder-caption">&lt;testimony + photo&gt;</span>
+                        <p class="testimony-text">"This man was both deaf and paralyzed on one side… Jesus healed him."</p>
+                    </div>
+
+                    <div class="placeholder-box testimony-card reveal-on-scroll">
+                        <svg class="placeholder-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+                        <span class="placeholder-caption">&lt;testimony + photo&gt;</span>
+                        <p class="testimony-text" style="color:var(--color-text-muted);font-style:normal">Second first-hand testimony from Dean's festival reports goes here — real words, real photo, with permission.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="prayer" class="prayer-section">
+            <div class="container reveal-on-scroll">
+                <h2 class="prayer-heading">Is there anything we can pray for, for you or your family?</h2>
+                <a href="#prayer-request-modal" class="btn btn-primary">Share a prayer request</a>
+            </div>
+        </section>
+
+        <section id="mailing-list" class="mailing-section">
+            <div class="container">
+                <div class="mailing-box reveal-on-scroll">
+                    <h2 class="mailing-title">Join our mailing list to never miss an update</h2>
+                    <form class="mailing-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing!');">
+                        <input type="email" class="mailing-input" placeholder="Enter your email address" required aria-label="Email address">
+                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-legal-name">Make Jesus Famous Ministries</div>
+                    <p>A registered 501(c)(3) nonprofit organization · EIN 92-3637456</p>
+                    <p style="margin-top: 0.5rem;">Led by evangelist Dean Morris. Reaching the unreached in the USA &amp; beyond.</p>
+                </div>
+
+                <div>
+                    <div style="font-weight: 700; color: var(--color-offwhite); margin-bottom: 0.5rem;">Quick Nav</div>
+                    <p><a href="#great-gospel-adventure">Great Gospel Adventure</a></p>
+                    <p><a href="#contact">Contact Ministry</a></p>
+
+                    <div class="footer-socials">
+                        <!-- Facebook Placeholder Icon -->
+                        <a href="#facebook" class="social-link" aria-label="Facebook">
+                            <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+                        </a>
+                        <!-- Instagram Placeholder Icon -->
+                        <a href="#instagram" class="social-link" aria-label="Instagram">
+                            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                        </a>
+                        <!-- YouTube Placeholder Icon -->
+                        <a href="#youtube" class="social-link" aria-label="YouTube">
+                            <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-ai-disclaimer">
+                Anything on this site that is automated or AI-assisted says so. Nothing here pretends to be Dean.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile Menu Toggle
+            const mobileToggle = document.getElementById('mobile-toggle');
+            const navLinks = document.getElementById('nav-links');
+
+            if (mobileToggle && navLinks) {
+                mobileToggle.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                });
+
+                // Close menu when clicking links
+                navLinks.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => navLinks.classList.remove('active'));
+                });
+            }
+
+            // Scroll Trigger Reveals
+            const revealElements = document.querySelectorAll('.reveal-on-scroll');
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15 });
+
+            revealElements.forEach(el => revealObserver.observe(el));
+
+            // Animated Stat Count-Up
+            const statNumbers = document.querySelectorAll('.stat-number');
+            let hasAnimatedStats = false;
+
+            const statsSection = document.getElementById('stats');
+            const statsObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !hasAnimatedStats) {
+                        hasAnimatedStats = true;
+                        animateStats();
+                    }
+                });
+            }, { threshold: 0.3 });
+
+            if (statsSection) {
+                statsObserver.observe(statsSection);
+            }
+
+            function animateStats() {
+                statNumbers.forEach(counter => {
+                    const target = parseInt(counter.getAttribute('data-target'), 10);
+                    const duration = 2000; // 2 seconds
+                    const startTime = performance.now();
+
+                    function updateCount(currentTime) {
+                        const elapsed = currentTime - startTime;
+                        const progress = Math.min(elapsed / duration, 1);
+                        
+                        // Ease out quad
+                        const easeProgress = 1 - (1 - progress) * (1 - progress);
+                        const currentVal = Math.floor(easeProgress * target);
+
+                        counter.textContent = currentVal.toLocaleString();
+
+                        if (progress < 1) {
+                            requestAnimationFrame(updateCount);
+                        } else {
+                            counter.textContent = target.toLocaleString();
+                        }
+                    }
+
+                    requestAnimationFrame(updateCount);
+                });
+            }
+
+            // Hero Canvas Stage Particle / Light Effect
+            const canvas = document.getElementById('stage-canvas');
+            if (canvas) {
+                const ctx = canvas.getContext('2d');
+                let particles = [];
+                const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+                function resizeCanvas() {
+                    canvas.width = canvas.parentElement.offsetWidth;
+                    canvas.height = canvas.parentElement.offsetHeight;
+                }
+
+                window.addEventListener('resize', resizeCanvas);
+                resizeCanvas();
+
+                if (!prefersReducedMotion) {
+                    class Particle {
+                        constructor() {
+                            this.reset();
+                        }
+
+                        reset() {
+                            this.x = Math.random() * canvas.width;
+                            this.y = canvas.height + Math.random() * 50;
+                            this.size = Math.random() * 3 + 1;
+                            this.speedY = Math.random() * 0.8 + 0.3;
+                            this.opacity = Math.random() * 0.5 + 0.2;
+                            this.color = Math.random() > 0.5 ? '#FFCB66' : '#EA492E';
+                        }
+
+                        update() {
+                            this.y -= this.speedY;
+                            if (this.y < -10) {
+                                this.reset();
+                            }
+                        }
+
+                        draw() {
+                            ctx.beginPath();
+                            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                            ctx.fillStyle = this.color;
+                            ctx.globalAlpha = this.opacity;
+                            ctx.fill();
+                            ctx.globalAlpha = 1.0;
+                        }
+                    }
+
+                    for (let i = 0; i < 40; i++) {
+                        particles.push(new Particle());
+                    }
+
+                    function animateCanvas() {
+                        ctx.clearRect(0, 0, canvas.width, canvas.height);
+                        particles.forEach(p => {
+                            p.update();
+                            p.draw();
+                        });
+                        requestAnimationFrame(animateCanvas);
+                    }
+
+                    animateCanvas();
+                }
+            }
+        });
+    </script>
+</body>
+</html>
