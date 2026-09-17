@@ -116,8 +116,8 @@ footer .legal{margin-top:.5rem}
 .progress i{display:block;height:100%;background:var(--orange);width:20%;transition:width .3s}
 .field{display:grid;gap:.4rem;margin-bottom:.8rem}
 .field label{font-size:.72rem;color:var(--muted);font-weight:700;letter-spacing:.1em;text-transform:uppercase}
-.field input,.field textarea{padding:.85rem .95rem;border:2px solid var(--black);border-radius:0;font-size:1rem;font-family:inherit;background:var(--white);color:var(--ink)}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+.field input,.field textarea{padding:.85rem .95rem;border:2px solid var(--black);border-radius:0;font-size:1rem;font-family:inherit;background:var(--white);color:var(--ink);width:100%;min-width:0}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}.grid2>*,.grid3>*{min-width:0}
 .grid3{display:grid;grid-template-columns:2fr 1fr 1fr;gap:.6rem}
 .consent{display:flex;gap:.6rem;align-items:flex-start;font-size:.85rem;color:var(--dim);margin:.5rem 0}
 .consent input{margin-top:4px;flex:none}
@@ -134,5 +134,7 @@ footer .legal{margin-top:.5rem}
   .prayer{grid-template-columns:1fr}
   .grid3{grid-template-columns:1fr}
   header nav{display:none}
+  .wrap{overflow-x:clip}
 }
+@media (max-width:560px){.grid2{grid-template-columns:1fr}.share{flex-direction:column}.share .btn,.ty-hero .btn{width:100%}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important}}
