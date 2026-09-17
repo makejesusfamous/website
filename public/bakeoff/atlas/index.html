@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Make Jesus Famous — Help us reach the next 100,000</title>
+<meta name="description" content="Make Jesus Famous Ministries trains pastors and holds open-air Gospel festivals in Tanzania, Ethiopia, Indonesia and the USA. 0% fees. 100% to the mission.">
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0b0b0c;--ink-2:#15161a;--ink-3:#1f2127;
+  --paper:#f5f5f0;--paper-dim:#c9c8bf;--paper-faint:#8f8e86;
+  --gold:#ffcb66;--gold-deep:#e0a83a;
+  --flare:#ff5a3c;          /* the old red-orange, pushed warmer + brighter for light effects */
+  --sky:#3fb8ff;            /* evolves the slate blue into stage light */
+  --line:rgba(245,245,240,.12);
+  --radius:20px;--max:1200px;
+  --ease:cubic-bezier(.2,.7,.2,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--paper);font-family:Poppins,system-ui,sans-serif;font-weight:300;line-height:1.55;font-size:17px;overflow-x:hidden}
+img,video{max-width:100%;display:block}
+a{color:inherit}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
+h1,h2,h3{font-weight:800;letter-spacing:-.02em;line-height:1.02}
+h1{font-size:clamp(40px,7.2vw,92px)}
+h2{font-size:clamp(30px,4.6vw,56px)}
+h3{font-size:20px;font-weight:600;letter-spacing:0}
+.label{font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);font-weight:600}
+.lead{font-size:clamp(17px,1.6vw,21px);color:var(--paper-dim);max-width:58ch}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:16px 26px;border-radius:999px;font-weight:600;text-decoration:none;font-size:16px;line-height:1;border:1.5px solid transparent;cursor:pointer;transition:transform .35s var(--ease),background .35s,box-shadow .35s;will-change:transform}
+.btn-gold{background:var(--gold);color:var(--ink);box-shadow:0 10px 40px rgba(255,203,102,.25)}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 18px 50px rgba(255,203,102,.4)}
+.btn-ghost{border-color:var(--line);color:var(--paper)}
+.btn-ghost:hover{border-color:var(--gold);transform:translateY(-2px)}
+.ph{position:relative;background:var(--ink-3);border:1.5px dashed rgba(255,203,102,.55);border-radius:var(--radius);display:grid;place-items:center;color:var(--paper-faint);font-size:13px;text-align:center;padding:14px;overflow:hidden}
+.ph::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 60% at 30% 20%,rgba(63,184,255,.12),transparent 60%),radial-gradient(50% 50% at 80% 90%,rgba(255,90,60,.12),transparent 60%)}
+.ph span{position:relative}
+section{padding:96px 0;position:relative}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+.reveal[data-d="1"]{transition-delay:.1s}.reveal[data-d="2"]{transition-delay:.2s}.reveal[data-d="3"]{transition-delay:.3s}.reveal[data-d="4"]{transition-delay:.4s}
+
+/* header */
+header{position:sticky;top:0;z-index:40;backdrop-filter:blur(14px);background:rgba(11,11,12,.6);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:70px}
+.logo{font-weight:800;letter-spacing:-.02em;font-size:19px;text-decoration:none}
+.logo b{color:var(--gold)}
+nav.main{display:flex;gap:28px;align-items:center}
+nav.main a{text-decoration:none;color:var(--paper-dim);font-size:15px;font-weight:600;transition:color .3s}
+nav.main a:hover{color:var(--paper)}
+nav.main .btn{padding:12px 20px;font-size:14px}
+.menu-btn{display:none;background:none;border:1.5px solid var(--line);color:var(--paper);border-radius:999px;padding:10px 14px;font:inherit;font-size:14px;font-weight:600}
+.menu-btn[aria-expanded="true"]+nav.main{display:flex}
+
+/* hero */
+#hero{min-height:92vh;display:grid;align-items:center;padding:60px 0 40px;overflow:hidden;isolation:isolate}
+#stage{position:absolute;inset:0;z-index:-1;pointer-events:none}
+#hero .glow{position:absolute;inset:0;z-index:-1;background:
+  radial-gradient(55% 45% at 70% 15%,rgba(255,203,102,.22),transparent 65%),
+  radial-gradient(45% 40% at 15% 85%,rgba(63,184,255,.16),transparent 65%),
+  radial-gradient(35% 30% at 85% 80%,rgba(255,90,60,.14),transparent 65%);
+  animation:drift 18s ease-in-out infinite alternate}
+@keyframes drift{from{transform:translate3d(0,0,0) scale(1)}to{transform:translate3d(-3%,2%,0) scale(1.06)}}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+.hero-copy .label{margin-bottom:18px;display:block}
+.hero-copy h1 .line{display:block;overflow:hidden}
+.hero-copy h1 .line span{display:block;transform:translateY(110%);animation:rise 1.1s var(--ease) forwards}
+.hero-copy h1 .line:nth-child(2) span{animation-delay:.12s}
+@keyframes rise{to{transform:none}}
+.hero-copy .lead{margin:22px 0 32px}
+.cta{display:flex;gap:14px;flex-wrap:wrap}
+.hero-media{aspect-ratio:4/5;max-height:640px;border-radius:28px;box-shadow:0 40px 120px rgba(0,0,0,.6),0 0 0 1px var(--line);transform:perspective(1200px) rotateY(-6deg);transition:transform 1s var(--ease)}
+.hero-media:hover{transform:perspective(1200px) rotateY(0)}
+.hero-media .play{width:74px;height:74px;border-radius:50%;background:var(--gold);display:grid;place-items:center;color:var(--ink);font-weight:800;box-shadow:0 0 0 12px rgba(255,203,102,.18);animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 22px rgba(255,203,102,0)}}
+.scroll-hint{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--paper-faint)}
+
+/* stats */
+#stats{padding:0 0 40px}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:2px;background:var(--line);border-radius:var(--radius);overflow:hidden}
+.stat{background:var(--ink-2);padding:34px 28px;min-width:0}
+.stat b{display:block;font-weight:800;font-size:clamp(34px,4.4vw,64px);letter-spacing:-.04em;line-height:1;background:linear-gradient(120deg,var(--paper),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent;font-variant-numeric:tabular-nums}
+.stat span{display:block;margin-top:10px;color:var(--paper-dim);font-size:14px;letter-spacing:.04em}
+
+/* festivals */
+.sec-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:36px;flex-wrap:wrap}
+.sec-head p{color:var(--paper-dim);max-width:52ch}
+.rail{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(300px,1fr);gap:18px;overflow-x:auto;padding:6px 6px 26px;scroll-snap-type:x mandatory;scrollbar-width:thin;scrollbar-color:var(--gold) transparent}
+.fest{scroll-snap-align:start;background:var(--ink-2);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;transition:transform .5s var(--ease),border-color .5s}
+.fest:hover{transform:translateY(-6px);border-color:rgba(255,203,102,.5)}
+.fest .ph{aspect-ratio:16/10;border-radius:0;border-left:0;border-right:0;border-top:0}
+.fest .body{padding:22px 22px 24px;display:grid;gap:6px}
+.fest .num{font-weight:800;font-size:38px;letter-spacing:-.03em;color:var(--gold);line-height:1}
+.fest .city{font-weight:600;font-size:15px;letter-spacing:.06em;text-transform:uppercase;color:var(--paper-dim)}
+.fest .quote{color:var(--paper);font-weight:300;font-style:italic}
+.fest a{margin-top:10px;color:var(--gold);text-decoration:none;font-weight:600;font-size:14px}
+
+/* zero */
+#zero .band{background:linear-gradient(135deg,#15161a,#0b0b0c 60%);border:1px solid var(--line);border-radius:28px;padding:64px 56px;display:grid;grid-template-columns:auto 1fr;gap:48px;align-items:center;position:relative;overflow:hidden}
+#zero .band::after{content:"";position:absolute;inset:-40%;background:conic-gradient(from 0deg,transparent 60%,rgba(255,203,102,.18),transparent 70%);animation:spin 14s linear infinite;pointer-events:none}
+@keyframes spin{to{transform:rotate(360deg)}}
+#zero .big{font-weight:800;font-size:clamp(84px,14vw,180px);letter-spacing:-.06em;line-height:.9;color:var(--gold);position:relative}
+#zero p{font-size:clamp(18px,1.9vw,24px);position:relative;color:var(--paper-dim)}
+#zero p b{color:var(--paper);font-weight:600}
+
+/* book */
+.book{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:center}
+.book .ph{aspect-ratio:2/3;max-width:360px;transform:rotate(-3deg)}
+.book h2{margin:12px 0 18px}
+.book .hook{font-size:clamp(22px,2.6vw,34px);font-weight:200;line-height:1.2;color:var(--paper)}
+.book .hook b{font-weight:800;color:var(--gold)}
+
+/* on-demand */
+.tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.tile{position:relative;aspect-ratio:16/10;border-radius:var(--radius);overflow:hidden;background:var(--ink-2);border:1px solid var(--line);display:flex;align-items:end;padding:18px;transition:transform .5s var(--ease)}
+.tile:hover{transform:scale(1.02)}
+.tile::before{content:"";position:absolute;inset:0;background:radial-gradient(70% 70% at 50% 0%,rgba(63,184,255,.16),transparent 70%)}
+.tile .play{position:absolute;top:16px;right:16px;width:40px;height:40px;border-radius:50%;background:rgba(245,245,240,.1);border:1px solid var(--line);display:grid;place-items:center;font-size:12px}
+.tile h3{position:relative;font-size:17px}
+
+/* testimonies */
+.testi{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.testi .ph{aspect-ratio:16/9}
+
+/* prayer + list */
+#prayer .card{background:var(--paper);color:var(--ink);border-radius:28px;padding:64px 48px;text-align:center}
+#prayer h2{color:var(--ink)}
+#prayer p{color:#4b4a44;max-width:60ch;margin:14px auto 28px}
+#prayer .btn{background:var(--ink);color:var(--paper)}
+#list form{display:flex;gap:10px;max-width:560px;margin:22px auto 0}
+#list input{flex:1;padding:16px 18px;border-radius:999px;border:1.5px solid var(--line);background:var(--ink-2);color:var(--paper);font:inherit;font-size:16px}
+#list{text-align:center}
+#list h2{font-size:clamp(26px,3.4vw,40px)}
+
+footer{border-top:1px solid var(--line);padding:48px 0 64px;color:var(--paper-faint);font-size:14px}
+footer .row{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer .social{display:flex;gap:14px}
+footer .social a{text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:8px 14px;color:var(--paper-dim)}
+footer .ai{margin-top:18px;color:var(--paper-dim)}
+
+@media (max-width:900px){
+  .hero-grid,.book,.testi,#zero .band{grid-template-columns:1fr}
+  .tiles{grid-template-columns:1fr 1fr}
+  .stats{grid-template-columns:1fr 1fr}
+  .menu-btn{display:block}
+  nav.main{display:none;position:absolute;top:70px;left:0;right:0;flex-direction:column;background:rgba(11,11,12,.96);padding:22px 20px 28px;border-bottom:1px solid var(--line);gap:18px;align-items:flex-start}
+  .hero-media{transform:none;max-height:520px}
+  #zero .band{padding:44px 26px;text-align:center}
+  section{padding:72px 0}
+  #list form{flex-direction:column}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .reveal{opacity:1;transform:none}
+  .hero-copy h1 .line span{transform:none}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="logo" href="#hero">Make Jesus <b>Famous</b></a>
+    <button class="menu-btn" aria-expanded="false" aria-controls="mainnav">Menu</button>
+    <nav class="main" id="mainnav">
+      <a href="#festivals">Festivals</a>
+      <a href="#ondemand">On-Demand</a>
+      <a href="#book">Run It Back</a>
+      <a href="#about">About</a>
+      <a class="btn btn-gold" href="#partner">Partner</a>
+    </nav>
+  </div>
+</header>
+
+<section id="hero">
+  <canvas id="stage" aria-hidden="true"></canvas>
+  <div class="glow" aria-hidden="true"></div>
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="label">Make Jesus Famous · Tanzania · Ethiopia · Indonesia · USA</span>
+      <h1><span class="line"><span>Help us reach</span></span><span class="line"><span>the next 100,000.</span></span></h1>
+      <p class="lead">We train pastors and hold open-air Gospel festivals in places where the name has not been heard — and we tell you exactly where every dollar goes.</p>
+      <div class="cta">
+        <a class="btn btn-gold" href="#partner">Become a partner</a>
+        <a class="btn btn-ghost" href="#hero-video" data-open-video>Watch the story ▸</a>
+      </div>
+    </div>
+    <div class="hero-media ph" id="hero-video"><div class="play">▶</div><span style="margin-top:14px">VIDEO PLACEHOLDER — Dean, 90 seconds, vertical 4:5<br>(festival crowd at night behind him)</span></div>
+  </div>
+  <div class="scroll-hint">scroll</div>
+</section>
+
+<section id="stats">
+  <div class="wrap">
+    <div class="stats reveal">
+      <div class="stat"><b data-count="11082">0</b><span>salvations</span></div>
+      <div class="stat"><b data-count="105295">0</b><span>festival attendees</span></div>
+      <div class="stat"><b data-count="774091">0</b><span>reached via media</span></div>
+      <div class="stat"><b data-count="6">0</b><span>nations</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="festivals">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div><span class="label">Festival reports</span><h2>Where the name went.</h2></div>
+      <p>Every festival gets a report: how many nights, how many responded, what we saw. Real numbers from the field, not estimates.</p>
+    </div>
+    <div class="rail">
+      <article class="fest reveal" data-d="1"><div class="ph"><span>PHOTO — Chato crowd, night</span></div><div class="body"><div class="num">22,000+</div><div class="city">Chato, Tanzania · 4 nights</div><p class="quote">"Too many miracles to count."</p><a href="#">Read the report →</a></div></article>
+      <article class="fest reveal" data-d="2"><div class="ph"><span>PHOTO — Katoro</span></div><div class="body"><div class="num">30,000+</div><div class="city">Katoro, Tanzania</div><p class="quote">"There was joy in the city."</p><a href="#">Read the report →</a></div></article>
+      <article class="fest reveal" data-d="3"><div class="ph"><span>PHOTO — Ushirombo</span></div><div class="body"><div class="num">25,000+</div><div class="city">Ushirombo, Tanzania</div><p class="quote">"Hundreds of miracles."</p><a href="#">Read the report →</a></div></article>
+      <article class="fest reveal" data-d="4"><div class="ph"><span>PHOTO — Tabora</span></div><div class="body"><div class="num">7,000+</div><div class="city">Tabora, Tanzania</div><p class="quote">"Jesus is alive today."</p><a href="#">Read the report →</a></div></article>
+      <article class="fest reveal"><div class="ph"><span>PHOTO — Ziway stadium</span></div><div class="body"><div class="num">5,000+</div><div class="city">Ziway, Ethiopia</div><p class="quote">"The stadium was in awe."</p><a href="#">Read the report →</a></div></article>
+      <article class="fest reveal"><div class="ph"><span>PHOTO — Agats / Kurik / Dobo</span></div><div class="body"><div class="num">3 towns</div><div class="city">Indonesia</div><p class="quote">"To the ends of the earth."</p><a href="#">Read the report →</a></div></article>
+      <article class="fest reveal"><div class="ph"><span>PHOTO — Danville</span></div><div class="body"><div class="num">60+</div><div class="city">Danville, Kentucky</div><p class="quote">"Gospel Impact USA."</p><a href="#">Read the report →</a></div></article>
+    </div>
+  </div>
+</section>
+
+<section id="zero">
+  <div class="wrap">
+    <div class="band reveal">
+      <div class="big">0%</div>
+      <p><b>0% in fees. 100% to the mission.</b> We give through Givebutter, which covers its costs with optional tips — so every dollar you give reaches the field.</p>
+    </div>
+  </div>
+</section>
+
+<section id="book">
+  <div class="wrap book">
+    <div class="ph reveal"><span>BOOK COVER — Run It Back</span></div>
+    <div class="reveal" data-d="1">
+      <span class="label">Run It Back · the book</span>
+      <h2>Forget your religion.<br>Forget your effort.</h2>
+      <p class="hook">Just <b>Jesus.</b></p>
+      <p class="lead" style="margin:18px 0 26px">Dean's book on what happens when the Gospel is simply preached and simply believed. Yours for any gift of $20 or more. Free shipping in the US.</p>
+      <a class="btn btn-gold" href="#">Get the book for any gift of $20+</a>
+    </div>
+  </div>
+</section>
+
+<section id="ondemand">
+  <div class="wrap">
+    <div class="sec-head reveal"><div><span class="label">On-Demand</span><h2>Messages from the field.</h2></div><a class="btn btn-ghost" href="#">See all messages</a></div>
+    <div class="tiles">
+      <a class="tile reveal" href="#" data-d="1"><div class="play">▶</div><h3>Doubt Drops Dead — Living in the Possible</h3></a>
+      <a class="tile reveal" href="#" data-d="2"><div class="play">▶</div><h3>The Eid Experience: Abraham &amp; the Sacrifice for Us</h3></a>
+      <a class="tile reveal" href="#" data-d="3"><div class="play">▶</div><h3>Revival of the Gospel</h3></a>
+      <a class="tile reveal" href="#" data-d="4"><div class="play">▶</div><h3>Walking in the Wild</h3></a>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head reveal"><div><span class="label">Testimonies</span><h2>What we saw with our own eyes.</h2></div><p>Short, first-hand, concrete. The people in these stories gave permission to share them.</p></div>
+    <div class="testi">
+      <div class="ph reveal" data-d="1"><span>TESTIMONY + PHOTO — placeholder card 1</span></div>
+      <div class="ph reveal" data-d="2"><span>TESTIMONY + PHOTO — placeholder card 2</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="prayer">
+  <div class="wrap">
+    <div class="card reveal">
+      <span class="label" style="color:var(--gold-deep)">Before anything else</span>
+      <h2>Is there anything we can pray for, for you or your family?</h2>
+      <p>Not a formality. Your request goes on Dean's own prayer board and he prays over it himself.</p>
+      <a class="btn" href="#">Share a prayer request</a>
+    </div>
+  </div>
+</section>
+
+<section id="list">
+  <div class="wrap reveal">
+    <span class="label">Stay close</span>
+    <h2>Join the mailing list to never miss an update.</h2>
+    <form onsubmit="event.preventDefault();this.querySelector('button').textContent='You are in.'">
+      <input type="email" placeholder="you@example.com" aria-label="Email address" required>
+      <button class="btn btn-gold" type="submit">Keep me posted</button>
+    </form>
+  </div>
+</section>
+
+<footer id="partner">
+  <div class="wrap">
+    <div class="row">
+      <div><b style="color:var(--paper)">Make Jesus Famous Ministries Inc</b> · a 501(c)(3) public charity · EIN 92-3637456</div>
+      <div class="social"><a href="#">Facebook</a><a href="#">Instagram</a><a href="#">YouTube</a></div>
+    </div>
+    <p class="ai">Anything on this site that is automated or AI-assisted says so. Nothing here pretends to be Dean.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  // menu
+  var mb=document.querySelector(".menu-btn");
+  mb.addEventListener("click",function(){mb.setAttribute("aria-expanded",mb.getAttribute("aria-expanded")!=="true")});
+  document.querySelectorAll("nav.main a").forEach(function(a){a.addEventListener("click",function(){mb.setAttribute("aria-expanded","false")})});
+  // reveals
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},{threshold:.15});
+  document.querySelectorAll(".reveal").forEach(function(el){io.observe(el)});
+  // counters
+  var fmt=function(n){return n.toLocaleString("en-US")};
+  var cio=new IntersectionObserver(function(es){es.forEach(function(e){
+    if(!e.isIntersecting)return; cio.unobserve(e.target);
+    var el=e.target,end=+el.dataset.count; if(reduce){el.textContent=fmt(end);return}
+    var t0=performance.now(),dur=1800+Math.min(end,100000)/100;
+    (function tick(t){var p=Math.min(1,(t-t0)/dur);p=1-Math.pow(1-p,3);el.textContent=fmt(Math.round(end*p));if(p<1)requestAnimationFrame(tick)})(t0);
+  })},{threshold:.5});
+  document.querySelectorAll("[data-count]").forEach(function(el){cio.observe(el)});
+  // stage lights: slow drifting particles, cheap
+  var c=document.getElementById("stage");
+  if(c&&!reduce){
+    var ctx=c.getContext("2d"),W,H,P=[],N=70;
+    function size(){W=c.width=c.offsetWidth*devicePixelRatio;H=c.height=c.offsetHeight*devicePixelRatio}
+    size();addEventListener("resize",size);
+    for(var i=0;i<N;i++)P.push({x:Math.random(),y:Math.random(),r:.5+Math.random()*1.8,s:.00004+Math.random()*.00012,a:.2+Math.random()*.6,c:Math.random()<.8?"255,203,102":"63,184,255"});
+    var vis=true;document.addEventListener("visibilitychange",function(){vis=!document.hidden});
+    (function frame(){
+      if(vis){ctx.clearRect(0,0,W,H);
+        for(var i=0;i<N;i++){var p=P[i];p.y-=p.s;if(p.y<-.02){p.y=1.02;p.x=Math.random()}
+          ctx.beginPath();ctx.arc(p.x*W,p.y*H,p.r*devicePixelRatio,0,6.283);ctx.fillStyle="rgba("+p.c+","+p.a+")";ctx.fill()}}
+      requestAnimationFrame(frame)})();
+  }
+})();
+</script>
+</body>
+</html>
