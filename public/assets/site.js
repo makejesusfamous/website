@@ -14,7 +14,7 @@
     nav.querySelectorAll('a[href]').forEach(function (a) { var h = a.getAttribute('href'); if (h && h !== '/' && here.indexOf(h.replace(/#.*$/, '')) === 0 && h.length > 1) a.setAttribute('aria-current', 'page'); });
   }
 
-  // Scroll reveals
+  // Scroll reveals (html.js is set inline in <head>; without JS everything is simply visible)
   var reveals = document.querySelectorAll('.reveal');
   if (reduced || !('IntersectionObserver' in window)) reveals.forEach(function (x) { x.classList.add('is-visible'); });
   else { var ro = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('is-visible'); ro.unobserve(e.target); } }); }, { threshold: .12, rootMargin: '0px 0px -5% 0px' }); reveals.forEach(function (x) { ro.observe(x); }); }
@@ -25,6 +25,9 @@
   var counters = document.querySelectorAll('[data-count]');
   if ('IntersectionObserver' in window) { var co = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { run(e.target); co.unobserve(e.target); } }); }, { threshold: .45 }); counters.forEach(function (x) { co.observe(x); }); }
   else counters.forEach(function (x) { set(x, x.dataset.count); });
+
+  // Fallback: if observers never fire (slow device, odd viewport), show everything and finish the numbers
+  setTimeout(function () { reveals.forEach(function (x) { x.classList.add('is-visible'); }); counters.forEach(function (x) { if (x.textContent === '0' && +x.dataset.count !== 0) set(x, x.dataset.count); }); }, 2500);
 
   // Story video modal
   var modal = document.querySelector('[data-video-modal]');
