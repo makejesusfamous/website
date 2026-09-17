@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "mjf-static",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "8765", "--directory", "C:/Users/josha/workspace/r3dpill/mjf-funnel/public"],
+      "port": 8765
+    }
+  ]
+}
