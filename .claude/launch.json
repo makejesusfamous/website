@@ -4,8 +4,8 @@
     {
       "name": "mjf-static",
       "runtimeExecutable": "python",
-      "runtimeArgs": ["-m", "http.server", "8765", "--directory", "C:/Users/josha/workspace/r3dpill/mjf-funnel/public"],
-      "port": 8765
+      "runtimeArgs": ["C:/Users/josha/workspace/r3dpill/mjf-funnel/serve.py", "8766"],
+      "port": 8766
     }
   ]
 }
