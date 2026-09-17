@@ -54,4 +54,20 @@
       if (note) note.textContent = 'You are on the list. Watch for the next update from the field.';
     });
   });
+
+  // Contact form -> same intake webhook, tagged contact-form (Dean's current site: first/last/email/phone/message)
+  document.querySelectorAll('[data-contact]').forEach(function (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var note = form.querySelector('[data-form-note]');
+      var d = {}; new FormData(form).forEach(function (v, k) { d[k] = String(v).trim(); });
+      if (!d.first_name || !d.last_name || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(d.email || '') || !d.message) { if (note) note.textContent = 'Please add your name, a valid email, and your message.'; return; }
+      d.name = d.first_name + ' ' + d.last_name; d.tag = 'contact-form'; d.p_source = 'site:/contact/';
+      var a = (window.MJF && window.MJF.attribution) || {}, q = new URLSearchParams(location.search);
+      ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'gclid'].forEach(function (k) { d[k] = a[k] || q.get(k) || ''; });
+      try { fetch(WEBHOOK, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(d), keepalive: true }).catch(function () {}); } catch (err) {}
+      form.querySelectorAll('input,textarea,button').forEach(function (el) { el.disabled = true; });
+      if (note) { note.style.color = ''; note.textContent = 'Thanks for reaching out. Your message is on its way to the MJF team.'; }
+    });
+  });
 })();
