@@ -29,13 +29,20 @@
   // Fallback: if observers never fire (slow device, odd viewport), show everything and finish the numbers
   setTimeout(function () { reveals.forEach(function (x) { x.classList.add('is-visible'); }); counters.forEach(function (x) { if (x.textContent === '0' && +x.dataset.count !== 0) set(x, x.dataset.count); }); }, 2500);
 
-  // Story video modal
-  var modal = document.querySelector('[data-video-modal]');
+  // Home loop: 1080p on wide screens, 720p otherwise; pause while the modal is open
+  var loop = document.getElementById('field-loop');
+  if (loop && innerWidth >= 1100 && !matchMedia('(prefers-reduced-data: reduce)').matches) { var s = loop.querySelector('source'); if (s) { s.src = '/assets/video/mjf-home-1080p.mp4'; loop.load(); loop.play().catch(function () {}); } }
+
+  // Story video modal (same loop with sound until Dean's 90-second story video lands)
+  var modal = document.querySelector('[data-video-modal]'), mv = document.getElementById('modal-video');
   if (modal) {
-    document.querySelectorAll('[data-open-video]').forEach(function (b) { b.addEventListener('click', function (e) { e.preventDefault(); modal.showModal(); }); });
+    var open = function (e) { e.preventDefault(); if (loop) loop.pause(); modal.showModal(); if (mv) { mv.currentTime = 0; mv.muted = false; mv.play().catch(function () {}); } };
+    var close = function () { if (mv) mv.pause(); modal.close(); if (loop) loop.play().catch(function () {}); };
+    document.querySelectorAll('[data-open-video]').forEach(function (b) { b.addEventListener('click', open); });
     var closer = modal.querySelector('[data-close-video]');
-    if (closer) closer.addEventListener('click', function () { modal.close(); });
-    modal.addEventListener('click', function (e) { if (e.target === modal) modal.close(); });
+    if (closer) closer.addEventListener('click', close);
+    modal.addEventListener('click', function (e) { if (e.target === modal) close(); });
+    modal.addEventListener('cancel', function () { if (mv) mv.pause(); if (loop) loop.play().catch(function () {}); });
   }
 
   // Mailing list -> GHL webhook (magazine/mailing intake), with first-touch attribution when available
