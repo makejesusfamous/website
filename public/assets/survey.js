@@ -19,7 +19,7 @@
   function route() {
     var t = state.p_intent;
     if (t === "monthly_partner") { close(); location.hash = "#tiers"; }
-    else if (t === "one_time") { location.href = decorated(GIVE_SITE); }
+    else if (t === "one_time") { conversion("giving"); location.href = decorated(GIVE_SITE); }
     else if (t === "smart_giving") { location.href = "/smart-giving/"; }
     else { location.href = "/thank-you-prayer/"; }
   }
@@ -35,6 +35,7 @@
     modal.classList.add("open"); show(0);
   }
   function close() { modal.classList.remove("open"); }
+  function conversion(kind) { try { if (window.MJF && window.MJF.conversion) window.MJF.conversion(kind); } catch (e) {} }
 
   function next() {
     var i = +modal.dataset.idx;
@@ -65,6 +66,7 @@
       fetch(WEBHOOK, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload), keepalive: true })
         .catch(function () {});   // keepalive: the POST survives the redirect either way
     } catch (e) {}
+    conversion("signup");
     setTimeout(route, 250);
   }
 
