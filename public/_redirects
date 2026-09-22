@@ -1,0 +1,4 @@
+# Smart-giving page is not built yet; the Partner Path routes smart_giving there. Send those
+# visitors to Contact until it exists (a real /smart-giving/index.html automatically takes over).
+/smart-giving    /contact/    302
+/smart-giving/*  /contact/    302
