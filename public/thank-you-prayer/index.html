@@ -80,6 +80,7 @@
     if(!f.consent_email.checked){err.textContent="Please tick the box so we may email you.";return;}
     var a=(window.MJF&&window.MJF.attribution)||{}; var q=new URLSearchParams(location.search);
     ["utm_source","utm_medium","utm_campaign","utm_term","utm_content"].forEach(function(k){d[k]=a[k]||q.get(k)||"";});
+    d.gclid=a.gclid||q.get("gclid")||"";
     d.p_intent="pray_first"; d.p_interest="prayer"; d.p_source="thank-you-prayer"; d.consent_email="yes";
     try{fetch(WEBHOOK,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(d),keepalive:true}).catch(function(){});}catch(e){}
     try{if(window.MJF&&window.MJF.conversion)window.MJF.conversion("prayer");}catch(e){}

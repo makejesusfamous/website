@@ -89,6 +89,7 @@
     for (var k of ["name","email","address1","city","state","postal_code"]) if(!d[k]){err.textContent="Please fill in every line so the magazine actually reaches you.";return;}
     var a=(window.MJF&&window.MJF.attribution)||{}; var q=new URLSearchParams(location.search);
     ["utm_source","utm_medium","utm_campaign","utm_term","utm_content"].forEach(function(k){d[k]=a[k]||q.get(k)||"";});
+    d.gclid=a.gclid||q.get("gclid")||"";
     d.tag="magazine-subscriber"; d.p_source="thank-you-gift";
     try{fetch(WEBHOOK,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(d),keepalive:true}).catch(function(){});}catch(e){}
     f.style.display="none"; document.getElementById("mag-ok").style.display="block";
