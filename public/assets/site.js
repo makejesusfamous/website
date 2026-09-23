@@ -70,6 +70,13 @@
     });
   });
 
+  // ?book= prefill: the book buttons send people here until Dean picks where the books sell
+  (function () {
+    var BOOKS = { 'run-it-back': 'Run It Back', 'kids-book': "the kids' book" };
+    var b = new URLSearchParams(location.search).get('book'), msg = document.getElementById('c-msg');
+    if (b && BOOKS[b] && msg && !msg.value) msg.value = "I'd like a copy of " + BOOKS[b] + '. My mailing address is: ';
+  })();
+
   // Contact form -> same intake webhook, tagged contact-form (Dean's current site: first/last/email/phone/message)
   document.querySelectorAll('[data-contact]').forEach(function (form) {
     form.addEventListener('submit', function (e) {
