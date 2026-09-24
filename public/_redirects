@@ -2,3 +2,21 @@
 # visitors to Contact until it exists (a real /smart-giving/index.html automatically takes over).
 /smart-giving    /contact/    302
 /smart-giving/*  /contact/    302
+
+# Old Wix page addresses -> their new pages, so Google results, old ads and shared links keep
+# working after makejesusfamous.world moves here. 301 = permanent; query strings (gclid, utm) carry over.
+/book                         /books/                 301
+/copy-of-run-it-back-book     /books/                 301
+/jesus                        /books/                 301
+/copy-of-on-demand            /partner/               301
+/festival-reports             /festivals/             301
+/copy-of-visit-catalyst-2     /festivals/             301
+/chato                        /festivals/chato/       301
+/copy-of-tabora-tanzania      /festivals/katoro/      301
+/copy-of-tabora-tanzania-1    /festivals/ushirombo/   301
+/danville-kentucky            /festivals/danville/    301
+/indonesia                    /festivals/indonesia/   301
+/tabora-tanzania              /festivals/tabora/      301
+/ziway-ethiopia               /festivals/ziway/       301
+/book-online                  /                       301
+/members                      /                       301
