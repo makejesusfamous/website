@@ -48,3 +48,5 @@ header.site{position:absolute;inset:0 0 auto;z-index:50;color:var(--off-white);b
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.reveal{opacity:1;transform:none}}
 
 .fee-mark--wide{font-size:clamp(3.4rem,8vw,7.5rem)}.fee-zero--wide{font-size:min(30vw,26rem)}
+
+.yt-frame{position:relative;width:100%;aspect-ratio:16/9;background:#000}.yt-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}

@@ -44,13 +44,20 @@
   // Story video modal (same loop with sound until Dean's 90-second story video lands)
   var modal = document.querySelector('[data-video-modal]'), mv = document.getElementById('modal-video');
   if (modal) {
-    var open = function (e) { e.preventDefault(); if (loop) loop.pause(); modal.showModal(); if (mv) { mv.currentTime = 0; mv.muted = false; mv.play().catch(function () {}); } };
-    var close = function () { if (mv) mv.pause(); modal.close(); if (loop) loop.play().catch(function () {}); };
+    // Once Dean's story video is on YouTube, put its ID in the dialog's data-yt and it plays instead of the loop
+    var yt = (modal.getAttribute('data-yt') || '').trim(), ytBox = null;
+    if (/^[\w-]{11}$/.test(yt) && mv) {
+      ytBox = document.createElement('div'); ytBox.className = 'yt-frame';
+      mv.replaceWith(ytBox); mv = null;
+      var ytNote = modal.querySelector('.form-fine'); if (ytNote) ytNote.hidden = true;
+    }
+    var open = function (e) { e.preventDefault(); if (loop) loop.pause(); modal.showModal(); if (ytBox) ytBox.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + yt + '?autoplay=1&rel=0&playsinline=1" title="The MJF story" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>'; if (mv) { mv.currentTime = 0; mv.muted = false; mv.play().catch(function () {}); } };
+    var close = function () { if (ytBox) ytBox.innerHTML = ''; if (mv) mv.pause(); modal.close(); if (loop) loop.play().catch(function () {}); };
     document.querySelectorAll('[data-open-video]').forEach(function (b) { b.addEventListener('click', open); });
     var closer = modal.querySelector('[data-close-video]');
     if (closer) closer.addEventListener('click', close);
     modal.addEventListener('click', function (e) { if (e.target === modal) close(); });
-    modal.addEventListener('cancel', function () { if (mv) mv.pause(); if (loop) loop.play().catch(function () {}); });
+    modal.addEventListener('cancel', function () { if (ytBox) ytBox.innerHTML = ''; if (mv) mv.pause(); if (loop) loop.play().catch(function () {}); });
   }
 
   // Mailing list -> GHL webhook (magazine/mailing intake), with first-touch attribution when available
