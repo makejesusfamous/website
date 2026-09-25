@@ -50,3 +50,6 @@ header.site{position:absolute;inset:0 0 auto;z-index:50;color:var(--off-white);b
 .fee-mark--wide{font-size:clamp(3.4rem,8vw,7.5rem)}.fee-zero--wide{font-size:min(30vw,26rem)}
 
 .yt-frame{position:relative;width:100%;aspect-ratio:16/9;background:#000}.yt-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+/* Festival-report videos (assets/video.js): YouTube thumbnail until tapped, then the player */
+[hidden]{display:none!important}.report-videos{margin-top:3rem}.report-videos .stories{margin-top:1rem}.story .video-embed{position:relative;aspect-ratio:16/9;overflow:hidden;border-bottom:2px solid var(--black);background:var(--black)}.story .video-embed.yt--tall{aspect-ratio:9/16}.yt .yt-play{position:absolute;inset:0;display:block;width:100%;height:100%;padding:0;border:0;background:#000;cursor:pointer}.yt .yt-play img{width:100%;height:100%;object-fit:cover;opacity:.85}.yt .yt-btn{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:grid;width:4.2rem;aspect-ratio:1;place-items:center;border-radius:50%;background:var(--gold);color:var(--black);font-size:1.4rem}.yt .yt-play:hover .yt-btn,.yt .yt-play:focus-visible .yt-btn{transform:translate(-50%,-50%) scale(1.08)}.yt iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
