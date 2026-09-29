@@ -16,6 +16,12 @@
     "tier-99": "https://square.link/u/5tPctgK9",
     "tier-250": "https://square.link/u/X0sAvbPd"
   };
+  // The same three monthly tiers for ad visitors, so a monthly gift that started from an ad is still attributable.
+  var MONTHLY_ADS = {
+    "tier-39": "https://square.link/u/idnlwYnv",
+    "tier-99": "https://square.link/u/qTD63TW2",
+    "tier-250": "https://square.link/u/rWIeNj4L"
+  };
 
   var state = { p_interest: "", p_intent: "", p_vehicle: "", p_amount_band: "", p_source: "" };
   var modal, steps, order, pathDone = false;
@@ -112,6 +118,11 @@
     $("form", modal).addEventListener("submit", submit);
     // one-time give links get this visitor's channel link
     document.querySelectorAll("[data-give]").forEach(function (a) { a.setAttribute("href", oneTimeLink()); });
+    // monthly tier buttons go straight to Square; ad visitors get the Ads copy of the tier
+    document.querySelectorAll("[data-monthly]").forEach(function (a) {
+      var t = a.getAttribute("data-monthly"), l = (channel() === "ads" && MONTHLY_ADS[t]) || MONTHLY[t];
+      if (l) a.setAttribute("href", l);
+    });
     if (window.MJF && window.MJF.decorateLinks) window.MJF.decorateLinks();
   });
 })();
