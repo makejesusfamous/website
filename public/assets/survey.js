@@ -9,7 +9,7 @@
     website: "https://square.link/u/DwpwvAA8",
     ads: "https://square.link/u/SlypZoUN",
     email: "https://square.link/u/XeUN36Ja",
-    social: "https://square.link/u/FSNdjddl"
+    social: "https://square.link/u/FSNdjddI"
   };
   var MONTHLY = {
     "tier-39": "https://square.link/u/LpBJxXqV",
