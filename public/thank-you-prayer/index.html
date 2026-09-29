@@ -78,6 +78,7 @@
   // pray-first intake goes to the Partner Path webhook (MW8) with p_intent=pray_first; the prayer text lands in prayer_request
   var WEBHOOK="https://services.leadconnectorhq.com/hooks/e4poIvyAFiLf6JN9ubzj/webhook-trigger/5cec18ae-dae2-449a-8390-361ea978b7d0";
   var f=document.getElementById("pray-form");
+  if(new URLSearchParams(location.search).get("from")==="gift"){var el=f.querySelector("input[name=email]").previousElementSibling;if(el)el.textContent="Email (the one you gave with)";}
   f.addEventListener("submit",function(e){
     e.preventDefault(); var err=f.querySelector(".err"); err.textContent="";
     var d=Object.fromEntries(new FormData(f).entries());
