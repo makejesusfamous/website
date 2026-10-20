@@ -79,7 +79,7 @@
 </footer>
 </div>
 
-<script src="/assets/attribution.js"></script>
+<script src="/assets/send.js"></script><script src="/assets/attribution.js"></script>
 <script>
 (function(){
   var WEBHOOK="https://services.leadconnectorhq.com/hooks/e4poIvyAFiLf6JN9ubzj/webhook-trigger/48ea2b02-a549-4600-a2e2-04691349676e"; // magazine intake (MW9)
@@ -92,8 +92,16 @@
     ["utm_source","utm_medium","utm_campaign","utm_term","utm_content"].forEach(function(k){d[k]=a[k]||q.get(k)||"";});
     d.gclid=a.gclid||q.get("gclid")||"";
     d.tag="magazine-subscriber"; d.p_source="thank-you-gift";
-    try{fetch(WEBHOOK,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(d),keepalive:true}).catch(function(){});}catch(e){}
-    f.style.display="none"; document.getElementById("mag-ok").style.display="block";
+    var btn=f.querySelector("button[type=submit]");
+    var go=function(){
+      btn.disabled=true; err.textContent="Sending…";
+      window.MJF.send("magazine",WEBHOOK,d).then(function(ok){
+        btn.disabled=false;
+        if(!ok) return window.MJF.fail(err,go);
+        f.style.display="none"; document.getElementById("mag-ok").style.display="block";
+      });
+    };
+    go();
   });
   document.querySelectorAll("[data-share]").forEach(function(b){b.addEventListener("click",function(e){
     e.preventDefault(); var u="https://www.makejesusfamous.world/partner/";

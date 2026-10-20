@@ -89,13 +89,24 @@
       page: location.pathname, gclid: q.get("gclid") || ((window.MJF && window.MJF.attribution && window.MJF.attribution.gclid) || "")
     }, (window.MJF && window.MJF.attribution) || {});
     ["utm_source","utm_medium","utm_campaign","utm_term","utm_content"].forEach(function (k) { if (!payload[k]) payload[k] = q.get(k) || ""; });
-    $("button[type=submit]", f).disabled = true;
-    try {
-      fetch(WEBHOOK, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload), keepalive: true })
-        .catch(function () {});   // keepalive: the POST survives the redirect either way
-    } catch (e) {}
-    conversion("signup");
-    setTimeout(route, 250);
+    var btn = $("button[type=submit]", f);
+    if (payload.prayer_request && window.MJF.prayerBackup) window.MJF.prayerBackup(Object.assign({ p_source: "partner-path" }, payload));
+    // "pray for us first" waits for the server's answer and never moves on after a failed send.
+    // The giving choices never block the gift: wait up to 3 s, then go either way (Square's own message, MW1,
+    // still records the gift and the giver; the saved copy is sent again on the next visit).
+    var praying = state.p_intent === "pray_first";
+    var go = function () {
+      btn.disabled = true; err.textContent = praying ? "Sending…" : "";
+      var sent = window.MJF.send("partner", WEBHOOK, payload, 8000);
+      // giving: stop waiting at 3 s but let the keepalive request finish on its own after the page moves on
+      if (!praying) sent = Promise.race([sent, new Promise(function (r) { setTimeout(function () { r(true); }, 3000); })]);
+      sent.then(function (ok) {
+        if (praying && !ok) { btn.disabled = false; return window.MJF.fail(err, go, true); }
+        conversion("signup");
+        route();
+      });
+    };
+    go();
   }
 
   document.addEventListener("DOMContentLoaded", function () {

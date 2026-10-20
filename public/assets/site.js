@@ -71,9 +71,18 @@
       var a = (window.MJF && window.MJF.attribution) || {}, q = new URLSearchParams(location.search);
       var d = { email: email, tag: 'mailing-list', p_source: 'site:' + location.pathname, consent_email: 'yes' };
       ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'gclid'].forEach(function (k) { d[k] = a[k] || q.get(k) || ''; });
-      try { fetch(WEBHOOK, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(d), keepalive: true }).catch(function () {}); } catch (err) {}
-      form.reset();
-      if (note) note.textContent = 'You are on the list. Watch for the next update from the field.';
+      // wait for the server's answer; on failure keep the email in the box and offer Try again (assets/send.js)
+      var btn = form.querySelector('button'), go = function () {
+        if (btn) btn.disabled = true;
+        if (note) note.textContent = 'Sending…';
+        window.MJF.send('mailing', WEBHOOK, d).then(function (ok) {
+          if (btn) btn.disabled = false;
+          if (!ok) return window.MJF.fail(note, go);
+          form.reset();
+          if (note) note.textContent = 'You are on the list. Watch for the next update from the field.';
+        });
+      };
+      go();
     });
   });
 
@@ -94,9 +103,15 @@
       d.name = d.first_name + ' ' + d.last_name; d.tag = 'contact-form'; d.p_source = 'site:/contact/';
       var a = (window.MJF && window.MJF.attribution) || {}, q = new URLSearchParams(location.search);
       ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'gclid'].forEach(function (k) { d[k] = a[k] || q.get(k) || ''; });
-      try { fetch(WEBHOOK, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(d), keepalive: true }).catch(function () {}); } catch (err) {}
-      form.querySelectorAll('input,textarea,button').forEach(function (el) { el.disabled = true; });
-      if (note) { note.style.color = ''; note.textContent = 'Thanks for reaching out. Your message is on its way to the MJF team.'; }
+      var fields = form.querySelectorAll('input,textarea,button'), go = function () {
+        fields.forEach(function (el) { el.disabled = true; });
+        if (note) { note.style.color = ''; note.textContent = 'Sending…'; }
+        window.MJF.send('contact', WEBHOOK, d).then(function (ok) {
+          if (!ok) { fields.forEach(function (el) { el.disabled = false; }); return window.MJF.fail(note, go); }
+          if (note) note.textContent = 'Thanks for reaching out. Your message is on its way to the MJF team.';
+        });
+      };
+      go();
     });
   });
 })();

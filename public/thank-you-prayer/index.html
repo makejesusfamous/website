@@ -66,13 +66,16 @@
   </div>
 </section>
 
+<!-- Netlify Forms detects this at deploy; send.js posts a backup copy of each prayer request to it (Josh, 10/19) -->
+<form name="prayer-backup" data-netlify="true" netlify-honeypot="bot-field" hidden><input name="bot-field"><input name="name"><input name="email"><textarea name="prayer_request"></textarea><input name="source"><input name="sent_at"></form>
+
 <footer>
   <div><b>Make Jesus Famous Ministries Inc</b> · a 501(c)(3) public charity · EIN 92-3637456</div>
   <div class="legal">Anything on this site that is automated or AI-assisted says so. Nothing here pretends to be Dean.</div>
 </footer>
 </div>
 
-<script src="/assets/attribution.js"></script>
+<script src="/assets/send.js"></script><script src="/assets/attribution.js"></script>
 <script>
 (function(){
   // pray-first intake goes to the Partner Path webhook (MW8) with p_intent=pray_first; the prayer text lands in prayer_request
@@ -88,9 +91,18 @@
     ["utm_source","utm_medium","utm_campaign","utm_term","utm_content"].forEach(function(k){d[k]=a[k]||q.get(k)||"";});
     d.gclid=a.gclid||q.get("gclid")||"";
     d.p_intent="pray_first"; d.p_interest="prayer"; d.p_source="thank-you-prayer"; d.consent_email="yes";
-    try{fetch(WEBHOOK,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(d),keepalive:true}).catch(function(){});}catch(e){}
-    try{if(window.MJF&&window.MJF.conversion)window.MJF.conversion("prayer");}catch(e){}
-    f.style.display="none"; document.getElementById("pray-ok").style.display="block";
+    window.MJF.prayerBackup(d); // second copy in MJF's own Netlify Forms (Josh, 10/19)
+    var btn=f.querySelector("button[type=submit]");
+    var go=function(){
+      btn.disabled=true; err.textContent="Sending…";
+      window.MJF.send("prayer",WEBHOOK,d).then(function(ok){
+        btn.disabled=false;
+        if(!ok) return window.MJF.fail(err,go,true);
+        try{if(window.MJF.conversion)window.MJF.conversion("prayer");}catch(e){}
+        f.style.display="none"; document.getElementById("pray-ok").style.display="block";
+      });
+    };
+    go();
   });
 })();
 </script>
